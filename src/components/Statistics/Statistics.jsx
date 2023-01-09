@@ -7,24 +7,24 @@ function getRandomHexColor() {
 
 
 export default function Statistics({title, stats }) {
-  return <section className="css.statistics">
-    <h2 className={css.title}>{title}</h2>
-
-      <ul className={css.statList}>{stats.map(stat =>
+  return  <section className={css.statistics}>
+      {title && <h2 className={css.title}>{title}</h2>}
+      <ul className={css.statList}>
+        {stats.map(({ id, label, percentage }) => (
           <li
-          key={stat.id}
-          style = {{backgroundColor: getRandomHexColor()}}
-          className={css.item}>
-          <span className={css.label}>{stat.label}</span>
-          <span className={css.percentage}>{stat.percentage}</span>
-    </li>)}
-   
-  </ul>
-</section>
+          key={id}
+          className={css.item}
+          style={{ backgroundColor: getRandomHexColor() }}>
+            <span className={css.label}>{label}</span>
+            <span className={css.percentage}>{percentage}%</span>
+          </li>
+        ))}
+      </ul>
+    </section>
 }
 
 Statistics.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   statis: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.string.isRequired,
