@@ -45,6 +45,7 @@
     justify-content: space-around;
     background-color: rgb(235, 230, 230);
     height: 90px;
+    padding-inline-start: 0%;
 }
 
 .label,
